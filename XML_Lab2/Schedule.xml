@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE schedule [
+	<!ELEMENT schedule (week+)>
+
+	<!ELEMENT week (day, day, day, day, day)>
+	<!ATTLIST week
+        date CDATA #REQUIRED>
+
+	<!ELEMENT day (lesson*)>
+	<!ATTLIST day
+        date CDATA #REQUIRED>
+
+	<!ELEMENT lesson EMPTY>
+	<!ATTLIST lesson
+        name CDATA #REQUIRED
+        aud CDATA #REQUIRED
+        lecturer CDATA #REQUIRED
+        start CDATA #REQUIRED
+        end CDATA #REQUIRED
+        type (lecture|seminar) #REQUIRED>
+]>
+<schedule>
+	<week date="2023-11-06">
+		<day date="2023-11-06">
+			<lesson name="Проектирование архитектуры программ.систем" aud="102[3]" lecturer="Хаберев Е.А." start="09:40:00" end="11:00:00" type="lecture"/>
+			<lesson name="Управление программными проектами" aud="510[3]" lecturer="Шестакова Л.В." start="11:30:00" end="12:50:00" type="seminar"/>
+			<lesson name="Научно-исследовательский семинар" aud="510[3]" lecturer="Викентьева О.Л." start="13:10:00" end="14:30:00" type="seminar"/>
+		</day>
+		<day date="2023-11-07">
+		</day>
+		<day date="2023-11-08">
+		</day>
+		<day date="2023-11-09">
+			<lesson name="Проектирование архитектуры программ.систем" aud="305[3]" lecturer="Банников Р.Ю." start="13:10:00" end="14:30:00" type="seminar"/>
+			<lesson name="Академ. письмо на анг.языке" aud="501[3]" lecturer="Туляков Д.С." start="15:00:00" end="16:20:00" type="seminar"/>
+		</day>
+		<day date="2023-11-10">
+			<lesson name="Технологии анализа данных в сети Интернет" aud="дист.[0]" lecturer="Ланин В.В." start="15:00:00" end="16:20:00" type="lecture"/>
+			<lesson name="Технологии анализа данных в сети Интернет" aud="дист.[0]" lecturer="Ланин В.В." start="16:40:00" end="18:00:00" type="seminar"/>
+		</day>
+	</week>
+</schedule>

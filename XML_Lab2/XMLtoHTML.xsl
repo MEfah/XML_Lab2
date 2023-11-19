@@ -3,25 +3,74 @@
 	<xsl:output method="text" indent="no"/>
 		
 	<xsl:template match="/">
-		<xsl:apply-templates select="schedule"/>
+		<html>
+			<head>
+				<style>
+					table, td, th {
+					border: 1px solid black;
+					border-collapse: collapse;
+					padding: 5 5;
+					}
+					td {
+					padding: 2 5;
+					}
+				</style>
+			</head>
+			<body>
+				<xsl:apply-templates select="schedule"/>
+			</body>
+		</html>
+		
 	</xsl:template>
 
 	<xsl:template match="schedule">
-		<xsl:text>Расписание НИУ ВШЭ учебной группы ПИ-20-1
-</xsl:text>
-		<xsl:apply-templates select="week"/>
+		<div>
+			Расписание НИУ ВШЭ учебной группы ПИ-20-1
+		</div>
+		<div>
+			<table>
+				<xsl:apply-templates select="week"/>
+			</table>
+		</div>
 	</xsl:template>
 		
 	<xsl:template match="week">
-		<xsl:text>Расписание на неделю от </xsl:text>
-		<xsl:value-of select="@date"/>
-		<xsl:text>:
-</xsl:text>
+		<tr>
+			<th colspan="5">
+				<xsl:text>Расписание на неделю от </xsl:text>
+				<xsl:value-of select="@date"/>
+			</th>
+		</tr>
+		<tr>
+			<th>День</th>
+			<th>Время</th>
+			<th>Предмет, тип занятия</th>
+			<th>Преподаватель</th>
+			<th>Аудитория</th>
+		</tr>
 		<xsl:apply-templates select="day"/>
 	</xsl:template>
 
 	<xsl:template match="day">
-		<xsl:value-of select="@date"/>
+		<tr>
+			<td>
+				<xsl:value-of select="@date"/>
+			</td>
+			<td>
+				<xsl:value-of select="lesson[0]/@date"/>
+			</td>
+			<td>
+				<xsl:value-of select="@date"/>
+			</td>
+			<td>
+				<xsl:value-of select="@date"/>
+			</td>
+			<td>
+				<xsl:value-of select="@date"/>
+			</td>
+		</tr>
+
+		
 		<xsl:text>:
 </xsl:text>
 		<xsl:choose>

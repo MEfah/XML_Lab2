@@ -26,6 +26,10 @@ XslCompiledTransform xslt = new XslCompiledTransform();
 xslt.Load(XmlReader.Create("XMLtoTXT.xsl", new XmlReaderSettings() { DtdProcessing = DtdProcessing.Ignore }));
 xslt.Transform(xDoc, null, XmlWriter.Create(Console.Out, xslt.OutputSettings));
 
+xslt = new XslCompiledTransform();
+xslt.Load(XmlReader.Create("XMLtoHTML.xsl", new XmlReaderSettings() { DtdProcessing = DtdProcessing.Ignore }));
+xslt.Transform(xDoc, null, XmlWriter.Create("C:\\Users\\Марк\\Desktop\\test.html", xslt.OutputSettings));
+
 #region functions
 
 void PrintXPathNodeResult(XmlElement element, string xpath)

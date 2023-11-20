@@ -1,6 +1,6 @@
 <!DOCTYPE xsl:stylesheet>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:output method="text" indent="no"/>
+	<xsl:output method="html" indent="yes"/>
 		
 	<xsl:template match="/">
 		<html>
@@ -53,45 +53,36 @@
 
 	<xsl:template match="day">
 		<tr>
-			<td>
+			<th colspan="5">
+				<xsl:text>Расписание на неделю от </xsl:text>
 				<xsl:value-of select="@date"/>
-			</td>
-			<td>
-				<xsl:value-of select="lesson[0]/@date"/>
-			</td>
-			<td>
-				<xsl:value-of select="@date"/>
-			</td>
-			<td>
-				<xsl:value-of select="@date"/>
-			</td>
-			<td>
-				<xsl:value-of select="@date"/>
-			</td>
+			</th>
 		</tr>
-
-		
-		<xsl:text>:
-</xsl:text>
-		<xsl:choose>
-			<xsl:when test="count(*)>0"><xsl:apply-templates select="lesson"/></xsl:when>
-            <xsl:otherwise>-
-</xsl:otherwise>
-        </xsl:choose>
-		
-		<xsl:text>
-</xsl:text>
+		<xsl:apply-templates select="lesson"/>
 	</xsl:template>
 
 	<xsl:template match="lesson">
-		<xsl:value-of select="substring(@start,0,6)"/>-<xsl:value-of select="substring(@end,0,6)"/> | <xsl:value-of select="@name"/> (<xsl:value-of select="@lecturer"/><xsl:text>, </xsl:text>
-		<xsl:choose>
-			<xsl:when test="@type=lecture">лекция</xsl:when>
-            <xsl:otherwise>семинар</xsl:otherwise>
-        </xsl:choose>		
-		<xsl:text>) - </xsl:text><xsl:value-of select="@aud"/>
-		<xsl:text>
-</xsl:text>
+		<tr>
+			<td>
+				
+			</td>
+			<td>
+				<xsl:value-of select="substring(@start,0,6)"/>-<xsl:value-of select="substring(@end,0,6)"/>
+			</td>
+			<td>
+				<xsl:value-of select="@name"/>
+				<xsl:choose>
+					<xsl:when test="@type=lecture">лекция</xsl:when>
+					<xsl:otherwise>семинар</xsl:otherwise>
+				</xsl:choose>	
+			</td>
+			<td>
+				<xsl:value-of select="@lecturer"/>
+			</td>
+			<td>
+				<xsl:value-of select="@aud"/>
+			</td>
+		</tr>
 	</xsl:template>
 
 </xsl:stylesheet>
